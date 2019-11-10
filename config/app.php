@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Bahia',
 
     /*
     |--------------------------------------------------------------------------
@@ -119,7 +119,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY', 'base64:0YuPF7cSWijoH1yilMRZrMMDbmD//mQiVnPIYjrazJI='),
 
     'cipher' => 'AES-256-CBC',
 
