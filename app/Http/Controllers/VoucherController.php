@@ -137,4 +137,32 @@ class VoucherController extends Controller
 
         return $view;
     }
+
+    public function close(Request $request, $voucher)
+    {
+        $voucher = Voucher::find($voucher);
+
+        if($voucher) {
+            $data = [];
+
+            $vacancy = $voucher->vaga;
+            $voucher->VCH_HR_SAIDA = Carbon::time()->format('H:i:S');
+            $typeClient = $voucher->VCH_FK_TIPO_CLIENTE;
+
+            if ($typeClient == TipoClienteEnum::HORISTA) {
+                $hourPrice = DB::table('VALOR')
+                    ->select('VAL_VL_VALOR')
+                    ->where('VAL_FK_TIPO_CLIENTE', TipoClienteEnum::HORISTA)
+                    ->first();
+                // Hora de entrada e saída
+                $in = Carbon::createFromFormat("H:i:s", $voucher->VCH_HR_ENTRADA, 'America/Bahia');
+                $out = Carbon::createFromFormat("H:i:s", $voucher->VCH_HR_SAIDA, 'America/Bahia');
+
+                $totalHours = $in->diffInHours($out);
+                $totalPrice = $totalHours * $hourPrice;
+            }
+
+
+        }
+    }
 }

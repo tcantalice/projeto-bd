@@ -12,6 +12,6 @@ class VagaSeeder extends Seeder
      */
     public function run()
     {
-        factory(Vaga::class, 200)->create();
+        factory(Vaga::class, 200)->create() ;
     }
 }
