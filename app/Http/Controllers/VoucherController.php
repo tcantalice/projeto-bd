@@ -24,21 +24,6 @@ class VoucherController extends Controller
         return view('voucher.mensalista', ['clientes' => array()]);
     }
 
-    public function mensalistaSearch(Request $request)
-    {
-        $rules = [];
-        if ($request->get('cpf') && !empty($request->cpf)) {
-            $rules[] = ['CLM_DS_CPF', $request->cpf];
-        }
-
-        if ($request->get('matricula') && !empty($request->matricula)) {
-            $rules[] = ['CLM_ID_MATRICULA', $request->matricula];
-        }
-
-        $results = ClienteMensalista::where($rules)->get();
-
-        return view('voucher.mensalista', ['clientes' => $results]);
-    }
 
     /**
      * Tela de geração de voucher para horistas
@@ -107,11 +92,43 @@ class VoucherController extends Controller
 
     private function gen4Horista(Request $request)
     {
+        $data = $request->all();
+        $vehicleSign = $data['placa'];
+        try {
+            DB::beginTransaction();
 
+            $vacancy = $this->getFreeVacancy();
+            $voucherCode = $this->voucherCode('H');
+
+            $voucher = new Voucher();
+
+            $voucher->VCH_ID_VOUCHER = $voucherCode;
+            $voucher->VCH_FK_PLACA = $vehicleSign;
+            $voucher->VCH_FK_TIPO_CLIENTE = TipoClienteEnum::HORISTA;
+            $voucher->VCH_FK_VAGA = $vacancy->VAG_ID_VAGA;
+            $voucher->VCH_HR_ENTRADA = Carbon::time()->format('H:i:s');
+
+            $voucher->save();
+
+            $vacancy->VAG_ST_STATUS = VagaEnum::OCUPADA;
+            $vacancy->update();
+
+            DB::commit();
+        } catch(\Throwable $th) {
+            DB::rollBack();
+        }
     }
 
-    public function show()
+    public function show(Request $request, $voucher)
     {
+        $voucher = Voucher::find($voucher);
 
+        $view = view('voucher.show');
+
+        if ($voucher) {
+            $view = $view->with(compact('voucher'));
+        }
+
+        return $view;
     }
 }

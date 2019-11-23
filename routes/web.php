@@ -27,5 +27,5 @@ Route::group(['prefix' => '/voucher'], function(){
     Route::get('/mensalista', 'VoucherController@mensalista')->name('voucher.mensalista');
     Route::get('/horista', 'VoucherController@horista')->name('voucher.horista');
     Route::post('/generate/{tipoCliente}', 'VoucherController@generate')->name('voucher.generate');
-
+    Route::get('/show', 'VoucherController@show')->name('voucher.show');
 });

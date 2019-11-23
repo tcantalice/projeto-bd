@@ -1,4 +1,6 @@
 <?php
+namespace App\Traits;
+
 
 use App\Enums\Vaga as VagaEnum;
 
