@@ -14,6 +14,8 @@
         {
             "database": "${workspaceFolder}/database/bd_project.db",
             "dialect": "SQLite",
+            "isActive": true,
+            "isConnected": true,
             "name": "SQLite - Projeto BD"
         }
     ],

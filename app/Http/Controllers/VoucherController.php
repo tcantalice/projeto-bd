@@ -21,9 +21,9 @@ class VoucherController extends Controller
 
     public function mensalista(Request $request)
     {
+
         return view('voucher.mensalista', ['clientes' => array()]);
     }
-
 
     /**
      * Tela de geração de voucher para horistas
@@ -61,6 +61,12 @@ class VoucherController extends Controller
         }
     }
 
+    /**
+     * Gera o voucher para cliente do tipo mensalista
+     *
+     * @param Request $request
+     * @return void
+     */
     private function gen4Mensalista(Request $request)
     {
         $data = $request->all();
