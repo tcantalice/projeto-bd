@@ -14,11 +14,20 @@ class VoucherController extends Controller
 {
     use GenerateVoucherTrait;
 
+    /**
+     * Visão principal
+     *
+     * @return void
+     */
     public function index()
     {
         return view('voucher.index');
     }
 
+    /**
+     * Visão de geração de voucher para horistas
+     * @author Tarcisio 'Kbça' Cantalice
+     */
     public function mensalista(Request $request)
     {
         return view('voucher.mensalista', ['clientes' => array()]);
@@ -26,6 +35,7 @@ class VoucherController extends Controller
 
     /**
      * Visão de geração de voucher para horistas
+     * @author Tarcisio 'Kbça' Cantalice
      *
      * @param Request $request
      */
@@ -43,6 +53,7 @@ class VoucherController extends Controller
 
     /**
      * Redirecionar ao gerador de voucher do tipo de cliente
+     * @author Tarcisio 'Kbça' Cantalice
      *
      * @param Request $request
      * @param int $tipoCliente
@@ -62,6 +73,7 @@ class VoucherController extends Controller
 
     /**
      * Gera o voucher para cliente do tipo mensalista
+     * @author Tarcisio 'Kbça' Cantalice
      *
      * @param Request $request
      * @return void
@@ -94,7 +106,13 @@ class VoucherController extends Controller
             DB::rollBack();
         }
     }
-
+    /**
+     * Undocumented function
+     * @author Tarcisio 'Kbça' Cantalice
+     *
+     * @param Request $request
+     * @return void
+     */
     private function gen4Horista(Request $request)
     {
         $data = $request->all();
@@ -126,6 +144,7 @@ class VoucherController extends Controller
 
     /**
      * Mostra informações do voucher
+     * @author Tarcisio 'Kbça' Cantalice
      *
      * @param Request $request
      * @param string $voucher
@@ -143,6 +162,7 @@ class VoucherController extends Controller
 
     /**
      * Encerra o voucher
+     * @author Tarcisio 'Kbça' Cantalice
      *
      * @param Request $request
      * @param string $voucher
