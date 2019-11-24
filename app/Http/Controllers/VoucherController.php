@@ -21,12 +21,11 @@ class VoucherController extends Controller
 
     public function mensalista(Request $request)
     {
-
         return view('voucher.mensalista', ['clientes' => array()]);
     }
 
     /**
-     * Tela de geração de voucher para horistas
+     * Visão de geração de voucher para horistas
      *
      * @param Request $request
      */
@@ -36,7 +35,7 @@ class VoucherController extends Controller
         $totalVacancy = count(Vaga::where('VAG_ST_SITUACAO', VagaEnum::LIVRE)->get());
 
         if ($totalVacancy == $totalMensalista) {
-            return redirect()->route('voucher')->withErrors(['noVacancy' => 'Não há vagas!']);
+            return redirect()->route('voucher')->withErrors(['erro_vagas' => 'Não há vagas!']);
         }
 
         return view('voucher.horista');
@@ -125,44 +124,64 @@ class VoucherController extends Controller
         }
     }
 
-    public function show(Request $request, $voucher)
+    /**
+     * Mostra informações do voucher
+     *
+     * @param Request $request
+     * @param string $voucher
+     */
+    public function show(Request $request, $voucherId)
     {
-        $voucher = Voucher::find($voucher);
-
         $view = view('voucher.show');
 
-        if ($voucher) {
+        if ($voucher = Voucher::find($voucherId)) {
             $view = $view->with(compact('voucher'));
         }
 
         return $view;
     }
 
+    /**
+     * Encerra o voucher
+     *
+     * @param Request $request
+     * @param string $voucher
+     */
     public function close(Request $request, $voucher)
     {
         $voucher = Voucher::find($voucher);
 
         if($voucher) {
             $data = [];
-
             $vacancy = $voucher->vaga;
-            $voucher->VCH_HR_SAIDA = Carbon::time()->format('H:i:S');
-            $typeClient = $voucher->VCH_FK_TIPO_CLIENTE;
 
+            $voucher->VCH_HR_SAIDA = Carbon::time()->format('H:i:S');
+            $vacancy->VAG_ST_SITUACAO = VagaEnum::LIVRE;
+
+            if($voucher->save()) {
+                $vacancy->save();
+
+                $data['voucher'] = $voucher;
+            }
+
+            $typeClient = $voucher->VCH_FK_TIPO_CLIENTE;
             if ($typeClient == TipoClienteEnum::HORISTA) {
                 $hourPrice = DB::table('VALOR')
                     ->select('VAL_VL_VALOR')
                     ->where('VAL_FK_TIPO_CLIENTE', TipoClienteEnum::HORISTA)
                     ->first();
+
                 // Hora de entrada e saída
                 $in = Carbon::createFromFormat("H:i:s", $voucher->VCH_HR_ENTRADA, 'America/Bahia');
                 $out = Carbon::createFromFormat("H:i:s", $voucher->VCH_HR_SAIDA, 'America/Bahia');
 
                 $totalHours = $in->diffInHours($out);
-                $totalPrice = $totalHours * $hourPrice;
+                $data['precoTotal'] = $totalHours * $hourPrice;
             }
 
-
+            return view('voucher.show', $data);
         }
+
+        return back(404)->withErrors(['erro_voucher' => 'Voucher não encontrado.']);
     }
 }
