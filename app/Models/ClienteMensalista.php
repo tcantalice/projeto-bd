@@ -62,6 +62,14 @@ class ClienteMensalista extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function contrato()
+    {
+        return $this->hasOne(Contrato::class, 'CNT_FK_CLIENTE', 'CLM_ID_MATRICULA');
+    }
+
+    /**
      * Função responsável por criar uma instância de ClienteMensalista
      *
      * @param array $data

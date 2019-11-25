@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ClienteMensalista;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Models\ClienteMensalista;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class ClienteMensalistaController extends Controller
@@ -31,14 +32,32 @@ class ClienteMensalistaController extends Controller
         return back()->with(['clientes' => $results]);
     }
 
-    public function delete(Request $request)
-    {
-        return view('cliente_mensalista.delete');
-    }
-
     public function destroy(Request $request, $matricula)
     {
+        $success = false;
 
+        if ($client = ClienteMensalista::find($matricula)) {
+            try {
+
+                $vehicles = $client->veiculos;
+                DB::beginTransaction();
+                $client->contrato()->delete();
+
+                foreach ($vehicles as $vehicle) {
+                    $vehicle->delete();
+                }
+
+                $client->delete();
+
+                DB::commit();
+                $success = true;
+            } catch(\Throwable $th) {
+                DB::rollback();
+                Log::error(self::class . "@destroy # ERRO: {$th}");
+                return redirect()->route('mensalista')->withErrors(['Ocorreu um erro durante a operação. Tente novamente!']);
+            }
+        }
+        return view('mensalista', compact('success'));
     }
 
     public function create()

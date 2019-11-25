@@ -18,5 +18,6 @@
             "driver": "SQLite",
             "name": "SQLite - Projeto BD"
         }
-    ]
+    ],
+    "sqltools.useNodeRuntime": true
 }

@@ -187,8 +187,11 @@ class VoucherController extends Controller
             $vacancy->update();
 
             DB::commit();
+            return view('voucher.show', compact('voucher'));
         } catch (\Throwable $th) {
             DB::rollBack();
+            Log::error("ERRO#gen4Mensalista: {$th}");
+            return view('voucher.mensalista')->withErrors(['Ocorreu um erro durante a geração do voucher. Tente novamente!'], 'gerar_voucher');
         }
     }
 }
