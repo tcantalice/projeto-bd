@@ -11,9 +11,13 @@ trait GenerateVoucher
      *
      * @return App\Models\Vaga
      */
-    public function getFreeVacancy()
+    public function getFreeVacancy($type)
     {
-        $vacancy = Vaga::where('VAG_ST_STATUS', VagaEnum::LIVRE)->first();
+        $rules = [
+            ['VAG_ST_STATUS', VagaEnum::LIVRE],
+            ['VAG_FK_TIPO_CLIENTE', $type]
+        ];
+        $vacancy = Vaga::where($rules)->first();
         return $vacancy;
     }
 

@@ -3,21 +3,20 @@
         {
             "database": "db_ucsal",
             "dialect": "MariaDB",
+            "name": "MariaDB",
+            "driver": "MariaDB",
             "isActive": false,
             "isConnected": false,
-            "name": "MariaDB",
             "password": "123456",
             "port": 3306,
             "server": "localhost",
             "username": "admin"
         },
         {
-            "database": "${workspaceFolder}/database/bd_project.db",
+            "database": "./database/bd_project.db",
             "dialect": "SQLite",
-            "isActive": true,
-            "isConnected": true,
+            "driver": "SQLite",
             "name": "SQLite - Projeto BD"
         }
-    ],
-    "sqltools.useNodeRuntime": true
+    ]
 }

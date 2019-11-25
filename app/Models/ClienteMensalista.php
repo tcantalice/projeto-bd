@@ -42,11 +42,40 @@ class ClienteMensalista extends Model
      */
     public $timestamps = false;
 
+
+    /**
+     * Atributos da model
+     */
+    private const attributes = [
+        'matricula' => 'CLM_ID_MATRICULA',
+        'cpf' => 'CLM_DS_CPF',
+        'nome' => 'CLM_DS_NOME',
+        'dataNascimento' => 'CLM_DT_NASCIMENTO'
+    ];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function veiculos()
     {
         return $this->hasMany(Veiculo::class, 'VCL_FK_PROPRIETARIO', 'CLM_ID_MATRICULA');
+    }
+
+    /**
+     * Função responsável por criar uma instância de ClienteMensalista
+     *
+     * @param array $data
+     * @param ClienteMensalista $entity
+     * @return ClienteMensalista
+     */
+    public static function createInstance(array $data, ClienteMensalista $entity=null)
+    {
+        if(!$entity) $entity = new ClienteMensalista();
+        foreach(self::attributes as $key => $attribute) {
+            if(in_array($key, $data)) {
+                $entity->attributes[$attribute] = $data[$key];
+            }
+        }
+        return $entity;
     }
 }
