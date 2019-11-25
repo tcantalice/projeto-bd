@@ -9,13 +9,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="223.96902mm"
-   height="37.925407mm"
-   viewBox="0 0 223.96902 37.925407"
+   width="500"
+   height="84.666634"
+   viewBox="0 0 132.29166 22.401381"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="fp.svg">
+   sodipodi:docname="fp-logo.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -25,16 +25,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="405.46964"
-     inkscape:cy="-66.817913"
-     inkscape:document-units="mm"
+     inkscape:zoom="1.4"
+     inkscape:cx="334.84998"
+     inkscape:cy="-30.118548"
+     inkscape:document-units="px"
      inkscape:current-layer="g4865"
      showgrid="false"
      inkscape:pagecheckerboard="true"
      showborder="true"
      inkscape:showpageshadow="false"
-     inkscape:snap-global="false"
+     inkscape:snap-global="true"
      inkscape:window-width="1366"
      inkscape:window-height="719"
      inkscape:window-x="0"
@@ -43,7 +43,9 @@
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
-     fit-margin-bottom="0" />
+     fit-margin-bottom="0"
+     units="px"
+     inkscape:snap-page="true" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -60,77 +62,69 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-65.093564,-65.424383)">
+     transform="translate(-65.093564,-80.948411)">
     <g
        id="g4865"
        transform="translate(41.57738,-89.202384)">
-      <g
-         id="g4911">
-        <g
-           id="g4897">
-          <rect
-             transform="translate(-41.57738,89.202384)"
-             style="opacity:1;vector-effect:none;fill:#ffcc00;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2.64583325;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
-             id="rect4747"
-             width="35.279575"
-             height="35.279575"
-             x="66.416481"
-             y="66.747299"
-             ry="5.4790249" />
-          <g
-             id="g4853"
-             transform="translate(-41.291992,89.202384)">
-            <g
-               id="g4877"
-               transform="translate(0.43968964)">
-              <text
-                 xml:space="preserve"
-                 style="font-style:normal;font-weight:normal;font-size:29.80592346px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.87182122;stroke-miterlimit:4;stroke-dasharray:none"
-                 x="69.291916"
-                 y="94.149803"
-                 id="text4766"><tspan
-                   sodipodi:role="line"
-                   id="tspan4764"
-                   x="69.291916"
-                   y="94.149803"
-                   style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans Bold Italic';fill:#000000;stroke:#000000;stroke-width:0.87182122;stroke-miterlimit:4;stroke-dasharray:none">F</tspan></text>
-              <text
-                 xml:space="preserve"
-                 style="font-style:normal;font-weight:normal;font-size:16.38119507px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.76284361;stroke-miterlimit:4;stroke-dasharray:none;paint-order:normal"
-                 x="85.896408"
-                 y="94.52066"
-                 id="text4766-6"><tspan
-                   sodipodi:role="line"
-                   id="tspan4764-7"
-                   x="85.896408"
-                   y="94.52066"
-                   style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans Bold Italic';fill:#000000;stroke:#000000;stroke-width:0.76284361;stroke-miterlimit:4;stroke-dasharray:none;paint-order:normal">P</tspan></text>
-            </g>
-          </g>
-          <text
-             id="text4766-5"
-             y="183.73662"
-             x="63.688"
-             style="font-style:normal;font-weight:normal;font-size:28.38983345px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.83040059;stroke-miterlimit:4;stroke-dasharray:none"
-             xml:space="preserve"><tspan
-               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans Bold';fill:#000000;stroke:none;stroke-width:0.83040059;stroke-miterlimit:4;stroke-dasharray:none"
-               y="183.73662"
-               x="63.688"
-               id="tspan4764-3"
-               sodipodi:role="line">Flanela's</tspan></text>
-          <text
-             id="text4766-5-7"
-             y="184.01385"
-             x="186.08943"
-             style="font-style:normal;font-weight:normal;font-size:28.38983345px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.83040059;stroke-miterlimit:4;stroke-dasharray:none"
-             xml:space="preserve"><tspan
-               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-family:'Liberation Sans Narrow';-inkscape-font-specification:'Liberation Sans Narrow Condensed';fill:#000000;stroke:none;stroke-width:0.83040059;stroke-miterlimit:4;stroke-dasharray:none"
-               y="184.01385"
-               x="186.08943"
-               id="tspan4764-3-5"
-               sodipodi:role="line">PARK</tspan></text>
-        </g>
-      </g>
+      <rect
+         style="opacity:1;vector-effect:none;fill:#ffc100;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.39726272;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+         id="rect4855"
+         width="132.29166"
+         height="22.401381"
+         x="23.516184"
+         y="170.15079" />
+      <rect
+         style="opacity:1;vector-effect:none;fill:#ffc100;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.56281292;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers stroke fill"
+         id="rect4747"
+         width="20.838568"
+         height="20.838568"
+         x="24.297592"
+         y="170.93221"
+         ry="3.2362926" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:17.60544777px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.51495814;stroke-miterlimit:4;stroke-dasharray:none"
+         x="26.424303"
+         y="187.11803"
+         id="text4766"><tspan
+           sodipodi:role="line"
+           id="tspan4764"
+           x="26.424303"
+           y="187.11803"
+           style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans Bold Italic';fill:#000000;stroke:#000000;stroke-width:0.51495814;stroke-miterlimit:4;stroke-dasharray:none">F</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:9.67587185px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.45058841;stroke-miterlimit:4;stroke-dasharray:none;paint-order:normal"
+         x="36.232071"
+         y="187.33708"
+         id="text4766-6"><tspan
+           sodipodi:role="line"
+           id="tspan4764-7"
+           x="36.232071"
+           y="187.33708"
+           style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans Bold Italic';fill:#000000;stroke:#000000;stroke-width:0.45058841;stroke-miterlimit:4;stroke-dasharray:none;paint-order:normal">P</tspan></text>
+      <text
+         id="text4766-5"
+         y="187.34509"
+         x="47.24445"
+         style="font-style:normal;font-weight:normal;font-size:16.76900673px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.49049225;stroke-miterlimit:4;stroke-dasharray:none"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans Bold';fill:#000000;stroke:none;stroke-width:0.49049225;stroke-miterlimit:4;stroke-dasharray:none"
+           y="187.34509"
+           x="47.24445"
+           id="tspan4764-3"
+           sodipodi:role="line">Flanela's</tspan></text>
+      <text
+         id="text4766-5-7"
+         y="187.50885"
+         x="119.54324"
+         style="font-style:normal;font-weight:normal;font-size:16.76900673px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.49049225;stroke-miterlimit:4;stroke-dasharray:none"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-family:'Liberation Sans Narrow';-inkscape-font-specification:'Liberation Sans Narrow Condensed';fill:#000000;stroke:none;stroke-width:0.49049225;stroke-miterlimit:4;stroke-dasharray:none"
+           y="187.50885"
+           x="119.54324"
+           id="tspan4764-3-5"
+           sodipodi:role="line">PARK</tspan></text>
     </g>
   </g>
 </svg>

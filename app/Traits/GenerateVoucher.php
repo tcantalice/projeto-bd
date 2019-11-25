@@ -2,7 +2,14 @@
 namespace App\Traits;
 
 
+use Carbon\Carbon;
+use App\Models\Vaga;
+use App\Models\Voucher;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use App\Enums\Vaga as VagaEnum;
+use App\Models\ClienteMensalista;
+use Illuminate\Support\Facades\DB;
 
 trait GenerateVoucher
 {
@@ -13,11 +20,9 @@ trait GenerateVoucher
      */
     public function getFreeVacancy($type)
     {
-        $rules = [
-            ['VAG_ST_STATUS', VagaEnum::LIVRE],
-            ['VAG_FK_TIPO_CLIENTE', $type]
-        ];
-        $vacancy = Vaga::where($rules)->first();
+        $vacancy = Vaga::where('VAG_ST_SITUACAO', VagaEnum::LIVRE)
+            ->where('VAG_FK_TIPO_CLIENTE', $type)
+            ->first();
         return $vacancy;
     }
 

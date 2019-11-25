@@ -20,15 +20,23 @@ Route::get('/', 'HomeController');
     echo $in->diffInHours($out);
 }); */
 
+// Mensalista
 Route::group(['prefix' => '/mensalista'], function() {
     Route::get('/search', 'ClienteMensalistaController@search')->name('mensalista.search');
+    Route::get('/create', 'ClienteMensalistaController@create')->name('mensalista.create');
+    Route::post('/store', 'ClienteMensalistaController@store')->name('mensalista.store');
+    Route::get('/edit', 'ClienteMensalistaController@edit')->name('mensalista.edit');
+    Route::post('/update', 'ClienteMensalistaController@update')->name('mensalista.update');
+    Route::get('/delete', 'ClienteMensalistaController@delete')->name('mensalista.delete');
+    Route::post('/destroy', 'ClienteMensalistaController@destroy')->name('mensalista.destroy');
 });
 
 Route::group(['prefix' => '/voucher'], function(){
     Route::get('/', 'VoucherController@index')->name('voucher');
     Route::get('/mensalista', 'VoucherController@mensalista')->name('voucher.mensalista');
     Route::get('/horista', 'VoucherController@horista')->name('voucher.horista');
-    Route::post('/generate/{tipoCliente}', 'VoucherController@generate')->name('voucher.generate');
+    Route::post('/horista/generate', 'VoucherController@gen4Horista')->name('voucher.horista.generate');
+    Route::post('/mensalista/generate', 'VoucherController@gen4Mensalista')->name('voucher.generateMensalista');
     Route::get('/show', 'VoucherController@show')->name('voucher.show');
-    Route::post('/close/{voucherId}', 'VoucherController@close')->name('voucher,close');
+    Route::post('/close/{voucherId}', 'VoucherController@close')->name('voucher.close');
 });

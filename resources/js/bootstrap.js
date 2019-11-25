@@ -39,3 +39,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/**
+ * JQuery Plugins
+ */
+require('../lib/jquery.mask.min.js');

@@ -31,19 +31,14 @@ class ClienteMensalistaController extends Controller
         return back()->with(['clientes' => $results]);
     }
 
-    public function remove(Request $request, $matricula)
+    public function delete(Request $request)
     {
-        $clienteMensalista = ClienteMensalista::find($matricula);
+        return view('cliente_mensalista.delete');
+    }
 
-        if($clienteMensalista){
-            try{
-                $flight->delete();
-            }catch{
-                return redirect()->back()->with([]);
-            }
-        }else{
-            return redirect()->back()-with([]);
-        }
+    public function destroy(Request $request, $matricula)
+    {
+
     }
 
     public function create()
