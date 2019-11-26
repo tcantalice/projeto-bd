@@ -2,14 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ClienteMensalista;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Models\ClienteMensalista;
+use App\Http\Requests\ClienteMensalista as ClienteMensalistaRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 
 class ClienteMensalistaController extends Controller
 {
+    /**
+     * Página inicial - Clientes Mensalista
+     */
+    public function index()
+    {
+        $clientes = ClienteMensalisa::all();
+        return view('cliente_mensalista.index', compact('clientes'));
+    }
+
     /**
      * Busca por clientes mensalistas
      * @author Tarcisio 'Kbça' Cantalice
@@ -27,11 +38,20 @@ class ClienteMensalistaController extends Controller
             $rules[] = ['CLM_ID_MATRICULA', $request->matricula];
         }
 
-        $results = ClienteMensalista::where($rules)->get();
+        $clients = ClienteMensalista::where($rules)->get();
 
-        return back()->with(['clientes' => $results]);
+        return back()->with(compact('clients'));
     }
 
+    /**
+     * Apaga o registro um cliente
+     * @author Brendo Pinheiro
+     * @author Tarcisio 'Kbça' Cantalice
+     *
+     * @param Request $request
+     * @param $matricula
+     * @return void
+     */
     public function destroy(Request $request, $matricula)
     {
         $success = false;
@@ -57,7 +77,7 @@ class ClienteMensalistaController extends Controller
                 return redirect()->route('mensalista')->withErrors(['Ocorreu um erro durante a operação. Tente novamente!']);
             }
         }
-        return view('mensalista', compact('success'));
+        return view('cliente_mensalista.index', compact('success'));
     }
 
     public function create()
@@ -65,19 +85,30 @@ class ClienteMensalistaController extends Controller
         return view('cliente_mensalista.index');
     }
 
-    public function store(Request $request)
+    /**
+     * Salva o registro de um cliente
+     * @author Brendo Pinheiro
+     * @author Tarcisio 'Kbça' Cantalice
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function store(ClienteMensalistaRequest $request)
     {
         $data = $request->except('_token');
         $data['matricula'] = $this->generateRegistration();
-        $entity = ClienteMensalista::createInstance($data);
 
-        $validator = self::validate($entity);
+        $validator = $request->validated();
 
         if ($validator->fails()) {
             $request->flash();
             return view('cliente_mensalista.create')
-                ->withErrors($validator, 'create');
+            ->withErrors($validator, 'create');
         }
+
+        $entity = ClienteMensalista::createInstance($data);
+
+        $entity->CLM_ID_MATRICULA = $this->generateRegistration();
 
         $success = $entity->save();
 
@@ -93,46 +124,67 @@ class ClienteMensalistaController extends Controller
         return view('cliente_mensalista.create', compact('success'));
     }
 
+    /**
+     * Tela de edição do cliente mensalista
+     *
+     * @param Request $request
+     */
     public function edit(Request $request)
     {
         return "cliente_mensalista.edit";
     }
 
-    public function update(Request $request, $matricula)
+    /**
+     * Atualiza o registro de um cliente
+     * @author Brendo Pinheiro
+     * @author Tarcisio 'Kbça' Cantalice
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function update(ClienteMensalistaRequest $request, $matricula)
     {
-        $clienteMensalista = ClienteMensalista::find($matricula);
+        $success = false;
+        if ($clienteMensalista = ClienteMensalista::find($matricula)) {
+            $validator = $request->validated();
+
+            if ($validator->fails()) {
+                $request->flash();
+                return view('cliente_mensalista.edit')
+                    ->withErrors($validator, 'edit');
+            }
+
+            $clienteMensalista = ClienteMensalista::createInstance($request-all(), $clienteMensalista);
+
+            $success = $clienteMensalista->update();
+        }
+
+        return view('cliente_mensalista.edit', compact('success'));
     }
 
     /**
      * Gera um novo número de matrícula
+     * @author Tarcisio 'Kbça' Cantalice
      *
-     * @return void
+     * @return string
      */
-    private static function generateRegistration()
+    private function generateRegistration()
     {
+        $cacheYear = Cache::get('year_code', 0);
+        $currentYear = Carbon::now('America/Bahia')->year;
 
+        $lastCode = Cache::get('last_code', 0);
+
+        if ($cacheYear < $currentYear) {
+            $cacheYear = $currentYear;
+            Cache::put('year_code', $cacheYear, 3600000);
+            $lastCode = 1;
+            Cache::put('last_code', $lastCode, 3600000);
+        }
+
+        $code = $cacheYear . str_pad($lastCode, 4, '0', STR_PAD_LEFT);
+        Cache::increment('last_code', 1);
+        return $code;
     }
 
-    /**
-     * Valida os dados da entidade
-     *
-     * @param ClienteMensalista $entity
-     * @return void
-     */
-    private static function validate($entity)
-    {
-        $messages = [
-            'required' => 'O campo é obrigatório',
-            'size' => 'Quantidade de caracteres inválida',
-            'unique' => 'Este valor já está presente no banco'
-        ];
-
-        $rules = [
-            'CLM_DS_CPF' => 'required|size:11|unique:CLIENTE_MENSALISTA,CLM_DS_CPF',
-            'CLM_DS_NOME' => 'required',
-            'CLM_DT_NASCIMENTO' => 'required'
-        ];
-
-        return Validator::make($entity, $rules, $messages);
-    }
 }

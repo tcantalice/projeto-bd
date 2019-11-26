@@ -22,6 +22,7 @@ Route::get('/', 'HomeController');
 
 // Mensalista
 Route::group(['prefix' => '/mensalista'], function() {
+    Route::get('/', 'ClienteMensalistaController@index')->name('mensalista');
     Route::get('/search', 'ClienteMensalistaController@search')->name('mensalista.search');
     Route::get('/create', 'ClienteMensalistaController@create')->name('mensalista.create');
     Route::post('/store', 'ClienteMensalistaController@store')->name('mensalista.store');
