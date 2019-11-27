@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $VAG_ID_VAGA
  * @property int $VAG_ST_SITUACAO
  * @property int $VAG_FK_TIPO_CLIENTE
-//  * @property TipoCliente $tipoCliente
  */
 class Vaga extends Model
 {
@@ -42,10 +41,13 @@ class Vaga extends Model
     public $timestamps = false;
 
     /**
-    //  * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return Voucher
      */
-    // public function tIPOCLIENTE()
-    // {
-    //     return $this->belongsTo('App\Models\TIPOCLIENTE', 'VAG_FK_TIPO_CLIENTE', 'TPC_ID_TIPO_CLIENTE');
-    // }
+    public function voucher()
+    {
+        $voucher = Voucher::where('VCH_FK_VAGA', $this->VAG_ID_VAGA)
+            ->whereNull('VCH_HR_SAIDA')
+            ->first();
+        return $voucher;
+    }
 }

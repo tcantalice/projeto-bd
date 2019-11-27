@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $CLM_DS_CPF
  * @property string $CLM_DS_NOME
  * @property string $CLM_DT_NASCIMENTO
+ * @property Veiculo[] $veiculos
+ * @property Contrato $contrato
  */
 class ClienteMensalista extends Model
 {

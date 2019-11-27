@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Vaga;
+use App\Models\ClienteMensalista;
 use Illuminate\Database\Seeder;
 
-class VagaSeeder extends Seeder
+class ClienteMensalistaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,6 @@ class VagaSeeder extends Seeder
      */
     public function run()
     {
-        factory(Vaga::class, 200)->create();
+        factory(ClienteMensalista::class, 50)->create();
     }
 }

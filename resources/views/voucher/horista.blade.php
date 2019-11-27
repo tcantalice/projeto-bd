@@ -1,13 +1,22 @@
 @extends('layouts.system', ['context'=>'Voucher Horista'])
 
 @section('content')
-@error('gerar_voucher')
-    <h1>{{ $message }}</h1>
-@enderror
-<form action="{{ route('voucher.horista.generate') }}" method="POST">
-    @csrf
-    @method('POST')
-    <input id="veiculo-placa" class="veiculo-placa" name="placa" type="text">
-    <button type="submit">Gerar voucher</button>
-</form>
+<div class="row">
+    <div id="titulo" class="container mt-4 py-3 border-bottom border-dark">
+        <h1>Voucher - Horista</h1>
+    </div>
+</div>
+<div class="container py-4">
+    <form action="{{ route('voucher.horista.generate') }}" method="POST">
+        @csrf
+        @method('POST')
+        <div class="form-group">
+            <label for="veiculo-placa" class="h4">Placa do carro</label>
+            <input id="veiculo-placa" class="form-control veiculo-placa" name="placa" type="text">
+            <small>Ex: AAA-0000</small>
+        </div>
+        <button class="btn btn-warning" type="submit">Gerar voucher</button>
+        <a href="{{ route('home') }}" class="btn btn-dark"><strong>Voltar</strong></a>
+    </form>
+</div>
 @endsection

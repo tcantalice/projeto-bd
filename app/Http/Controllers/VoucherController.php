@@ -18,16 +18,6 @@ class VoucherController extends Controller
     use GenerateVoucherTrait;
 
     /**
-     * Visão principal
-     *
-     * @return void
-     */
-    public function index()
-    {
-        return view('voucher.index');
-    }
-
-    /**
      * Visão de geração de voucher para horistas
      * @author Tarcisio 'Kbça' Cantalice
      */

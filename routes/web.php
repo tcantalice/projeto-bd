@@ -12,7 +12,7 @@ use Carbon\Carbon;
 |
 */
 
-Route::get('/', 'HomeController');
+Route::get('/', 'HomeController')->name('home');
 /* Route::get('/', function() {
     $in = Carbon::createFromTime(12, 30, 22, 'America/Bahia');
     $out = Carbon::createFromTime(14, 20, 11, 'America/Bahia');
@@ -33,7 +33,6 @@ Route::group(['prefix' => '/mensalista'], function() {
 });
 
 Route::group(['prefix' => '/voucher'], function(){
-    Route::get('/', 'VoucherController@index')->name('voucher');
     Route::get('/mensalista', 'VoucherController@mensalista')->name('voucher.mensalista');
     Route::get('/horista', 'VoucherController@horista')->name('voucher.horista');
     Route::post('/horista/generate', 'VoucherController@gen4Horista')->name('voucher.horista.generate');
@@ -41,3 +40,5 @@ Route::group(['prefix' => '/voucher'], function(){
     Route::get('/show', 'VoucherController@show')->name('voucher.show');
     Route::post('/close/{voucherId}', 'VoucherController@close')->name('voucher.close');
 });
+
+Route::get('/vagas', 'VagaController')->name('vagas');
