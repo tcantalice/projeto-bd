@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\TipoCliente as TipoClienteEnum;
+use Carbon\Carbon;
+use App\Models\Vaga;
+use App\Models\Veiculo;
+use App\Models\Voucher;
+use Illuminate\Http\Request;
 use App\Enums\Vaga as VagaEnum;
 use App\Models\ClienteMensalista;
-use App\Models\Vaga;
-use App\Models\Voucher;
-use App\Traits\GenerateVoucher as GenerateVoucherTrait;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\Enums\TipoCliente as TipoClienteEnum;
+use App\Traits\GenerateVoucher as GenerateVoucherTrait;
 
 class VoucherController extends Controller
 {
@@ -156,8 +157,19 @@ class VoucherController extends Controller
     public function gen4Mensalista(Request $request)
     {
         $data = $request->all();
-        $client = ClienteMensalista::find($data['matricula']);
-        $vehicle = $client->veiculos()->find($data['placaVeiculo']);
+
+        if(!$client = ClienteMensalista::find($data['matricula'])) {
+            return redirect()->route('voucher.mensalista')->withErrors(['404' => 'Cliente mensalista não encontrado.']);
+        }
+
+        if (!$vehicle = $client->veiculos()->find($data['placaVeiculo'])) {
+            $vehicle = new Veiculo();
+
+            $vehicle->VCL_ID_PLACA = $data['placaVeiculo'];
+            $vehicle->VCL_FK_PROPRIETARIO = $data['matricula'];
+
+            $vehicle->save();
+        }
         try {
             DB::beginTransaction();
             $vacancy = $this->getFreeVacancy(TipoClienteEnum::MENSALISTA);

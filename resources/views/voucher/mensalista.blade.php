@@ -7,18 +7,24 @@
     </div>
 </div>
 <div class="container py-4">
-    <form action="{{ route('cliente_mensalista.search') }}" method="GET">
+    <form action="{{ route('voucher.mensalista.generate') }}" method="POST">
         @csrf
         @method('POST')
+        @error('404')
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ $message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @enderror
         <div class="form-group">
             <label for="matricula" class="h4">Matrícula do cliente</label>
             <input id="matricula" class="form-control matricula" name="matricula" type="text">
             <small>Ex: 20010011</small>
         </div>
-        <div class="form-group">
-            <a href="{{ route('home') }}" class="btn btn-dark"><strong>Voltar</strong></a>
-            <button class="btn btn-warning" type="submit"><strong>Buscar</strong></button>
-        </div>
+        <a href="{{ route('home') }}" class="btn btn-dark"><strong>Voltar</strong></a>
+        <button class="btn btn-warning" type="submit"><strong>Gerar voucher</strong></button>
     </form>
 </div>
 @endsection

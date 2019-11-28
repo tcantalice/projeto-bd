@@ -29,7 +29,7 @@ Route::group(['prefix' => '/mensalista'], function() {
     Route::get('/edit', 'ClienteMensalistaController@edit')->name('mensalista.edit');
     Route::post('/update', 'ClienteMensalistaController@update')->name('mensalista.update');
     Route::get('/delete', 'ClienteMensalistaController@delete')->name('mensalista.delete');
-    Route::post('/destroy', 'ClienteMensalistaController@destroy')->name('mensalista.destroy');
+    Route::delete('/destroy', 'ClienteMensalistaController@destroy')->name('mensalista.destroy');
 });
 
 Route::group(['prefix' => '/voucher'], function(){
@@ -41,4 +41,5 @@ Route::group(['prefix' => '/voucher'], function(){
     Route::post('/close/{voucherId}', 'VoucherController@close')->name('voucher.close');
 });
 
-Route::get('/vagas', 'VagaController')->name('vagas');
+Route::get('/vagas', 'VagaController@index')->name('vagas');
+Route::get('/vagas/search', 'VagaController@search')->name('vagas.search');

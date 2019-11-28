@@ -15,8 +15,8 @@
             <input id="veiculo-placa" class="form-control veiculo-placa" name="placa" type="text">
             <small>Ex: AAA-0000</small>
         </div>
-        <button class="btn btn-warning" type="submit">Gerar voucher</button>
         <a href="{{ route('home') }}" class="btn btn-dark"><strong>Voltar</strong></a>
+        <button class="btn btn-warning" type="submit"><strong>Gerar voucher</strong></button>
     </form>
 </div>
 @endsection

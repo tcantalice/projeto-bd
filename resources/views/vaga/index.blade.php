@@ -6,12 +6,20 @@
         <h1>Vagas</h1>
     </div>
 </div>
-<form action="">
-
-</form>
-<div class="container">
+<div class="container pt-4">
+    <form action="{{ route('vagas.search') }}" method="GET">
+        @csrf
+        <div class="form-row">
+            <div class="form-group col-10">
+                <input id="search-voucher" type="text" class="form-control" name="voucher" placeholder="Código do Voucher">
+            </div>
+            <div class="form-group col-2">
+                <button type="submit" class="btn btn-warning btn-block"><strong>Buscar</strong></button>
+            </div>
+        </div>
+    </form>
     <div class="card-deck d-flex flex-wrap">
-        @foreach($vagas as $vaga)
+        @forelse($vagas as $vaga)
         @php
             $voucher = $vaga->voucher();
         @endphp
@@ -37,7 +45,9 @@
                 Ver voucher
             </a>
         </div>
-        @endforeach
+        @empty
+        <h3 class="text-center ml-3">Nenhum resultado encontrado</h3>
+        @endforelse
     </div>
 </div>
 @endsection
