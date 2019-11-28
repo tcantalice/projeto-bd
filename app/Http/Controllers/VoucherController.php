@@ -23,7 +23,7 @@ class VoucherController extends Controller
      */
     public function mensalista(Request $request)
     {
-        return view('voucher.mensalista', ['clientes' => array()]);
+        return view('voucher.mensalista');
     }
 
     /**

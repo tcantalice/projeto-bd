@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta http-equiv="refresh" content="">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
+    <link rel="stylesheet" href="../CSS/TelaInicial.css">
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+    <title>Flanela's</title>
+</head>
+
+<body>
+    <div id="generalTop" class="container-fluid w-100 h-60">
+        <img class="logo w-60 py-1" src="../Img/logo.svg">
+    </div>
+    <div class="row">
+        <div id="titulo" class="container mt-5 py-5 border-bottom border-dark">
+            <h1>Insira os dados do novo usuário</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 p-5 mt-5">
+                <table>
+                    <tr>
+                        <td><label>Nome </label></td>
+                        <td><input type="text" id="nome" placeholder="Ex: Maria da Silva" /></td>
+                    </tr>
+                    <tr>
+                        <td><label>CPF</label></td>
+                        <td><input type="text" id="CPF" placeholder="Ex: 000.000.000-00" data-mask="000.000.000-00" /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Data Nascimento</label></td>
+                        <td><input type="text" id="dataNasc" placeholder="Ex: 00/00/0000" data-mask="00/00/0000" /></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-6 p-5 mt-5">
+                <table>
+                    <tr>
+                        <td><label>Placa do veículo (1) </label></td>
+                        <td><input type="text" id="placa1" placeholder="Ex: ABC 1234" data-mask="AAA 0000" /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Placa do veículo (2) </label></td>
+                        <td><input type="text" id="placa2" placeholder="Ex: ABC 1234" data-mask="AAA 0000" /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Placa do veículo (3) </label></td>
+                        <td><input type="text" id="placa3" placeholder="Ex: ABC 1234" data-mask="AAA 0000" /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Modelo</label></td>
+                        <td><input type="text" id="modelo" placeholder="Ex: Fusca" /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Cor</label></td>
+                        <td><input type="text" id="cor" placeholder="Ex: Azul metálico" /></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="row1" class="row">
+            <div id="botao" class="col-12 py-5 mt-3">
+                <button class="btn btn-block btn-lg btn-warning p-5"><strong>Cadastrar</strong></button>
+            </div>
+            <div class="col-4">
+                <button class="btn btn-block btn-lg btn-dark"><strong>Voltar</strong></button>
+            </div>
+        </div>
+    </div>
+    <footer class="container border-top border-dark mt-5 py-5">
+        <div class="row">
+            <div class="col-6 col-md">
+                <h4>About us</h4>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-muted">Lorem</a></li>
+                    <li><a href="#" class="text-muted">Ipsum</a></li>
+                    <li><a href="#" class="text-muted">Dolor</a></li>
+                    <li><a href="#" class="text-muted">Sit Amek</a></li>
+                </ul>
+            </div>
+            <div class="col-6">
+                <h4>Support</h4>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-muted">Phone: 8957-8874-22</a></li>
+                    <li><a href="#" class="text-muted">Adress: QuickSilver St. 22</a></li>
+                    <li><a href="#" class="text-muted">E-mail: Support@flanelaspark.com</a></li>
+                </ul>
+            </div>
+            <div class="row align-self-end">
+                <div id="copyright" class="col-12 col-md">
+                    <p class="text-muted">Copyright &COPY; 2019. Flanela's Park All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="../JS/bootstrap.bundle.min.js"></script>
+    <script src="../jQuery/src/jquery.mask.js"></script>
+</body>
+
+</html>
