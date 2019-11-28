@@ -14,21 +14,23 @@
     <div id="generalTop" class="container-fluid w-100 h-60">
         <img class="logo w-60 py-1" src="../Img/logo.svg">
     </div>
-    <div class="row">
-        <div id="titulo" class="container mt-5 py-5 border-bottom border-dark">
-            <h1>Selecione o serviço</h1>
+    <div class="row mb-3">
+        <div id="titulo" class="container mt-4 py-3 border-bottom border-dark">
+            <h1>Voucher - Mensalista</h1>
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div id="botao" class="col-12 py-5 mt-3">
-                <button class="btn btn-block btn-lg btn-warning p-5"><strong>Entrada</strong></button>
-                <button class="btn btn-block btn-lg btn-warning  p-5"><strong>Novo Cadastro</strong></button>
+    <div class="container py-4">
+        <form action="" method="GET">
+            <div class="form-group">
+                <label for="matricula" class="h4">Matrícula do cliente</label>
+                <input id="matricula" class="form-control matricula" name="matricula" type="text">
+                <small>Ex: 20010011</small>
             </div>
-            <div class="col-4">
-                <button class="btn btn-block btn-lg btn-dark"><strong>Voltar</strong></button>
+            <div class="form-group">
+                <a href="" class="btn btn-dark"><strong>Voltar</strong></a>
+                <button class="btn btn-warning" type="submit"><strong>Buscar</strong></button>
             </div>
-        </div>
+        </form>
     </div>
     <footer class="container border-top border-dark mt-5 py-5">
         <div class="row">
