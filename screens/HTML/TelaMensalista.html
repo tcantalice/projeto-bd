@@ -21,10 +21,15 @@
     </div>
     <div class="container py-4">
         <form action="" method="GET">
-            <div class="form-group">
-                <label for="matricula" class="h4">Matrícula do cliente</label>
-                <input id="matricula" class="form-control matricula" name="matricula" type="text">
-                <small>Ex: 20010011</small>
+            <div class="row py-5">
+                <div class="form-group col-6 mt-2">
+                    <label for="matricula" class="h4">Matrícula do cliente</label>
+                    <input id="matricula" class="form-control matricula" placeholder="Ex: 20010011" name="matricula" type="text">
+                </div>
+                <div class="form-group col-6">
+                    <label for="placa do veiculo"><h4>Placa do veículo</h4></label>
+                    <input type="text" id="placa" class="form-control placa" placeholder="Ex: ABC 1234" data-mask="AAA 0000" />
+                </div>
             </div>
             <div class="form-group">
                 <a href="" class="btn btn-dark"><strong>Voltar</strong></a>
